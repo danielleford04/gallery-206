@@ -1,13 +1,8 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import React from 'react';
 import Gallery, {GalleryListItem} from './Gallery';
 import {mockArtObjectResponse1, mockArtObjectResponse2, mockArtObjectResponse3, mockArtObjectResponse4, mockArtObjectResponse5, mockArtObjectResponse6} from "../../data/mockArtObject";
-import mock = jest.mock;
-
-// TODO
-// renders gallery view on default
-// load more button calls fetch
 
 export function mockFetch(data: any) {
     return jest.fn().mockImplementation(() =>
@@ -28,7 +23,7 @@ describe('Gallery tests', () => {
         global.fetch = jest.fn(); // Reset the mock before each test
     });
 
-    it('should fetch data successfully', async () => {
+    it('should fetch data successfully and component should work appropriately with fetched data', async () => {
         global.fetch = jest.fn()
             .mockImplementationOnce(() =>
                 // mock the call to fetch art object ids
@@ -80,6 +75,13 @@ describe('Gallery tests', () => {
                 } as Response)
             );
 
+        //This act is necessary for the tests to work.
+        //In a workplace, I would probably spend some time diving into why that's a lint error
+        // and if there is a better way to do this,
+        // but for the sake of a coding assignment, after trying 4-5 different suggestions from Stack Overflow,
+        // this is the only one that cleared a different error and allowed the component to fully render and
+        // subsequent tests to be run.
+        // eslint-disable-next-line testing-library/no-unnecessary-act
         await act( async () => render(<Gallery/>));
 
         // api calls are all made correctly

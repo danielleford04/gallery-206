@@ -35,7 +35,9 @@ export const GalleryListItem: React.FC<GalleryListItemProps> = ({artObject, onCl
         <button onClick={onClick} style={{ background: 'none', border: 'none', display: 'block', textAlign: 'left'}} aria-label={"Click to view details of this gallery piece"}>
             <div style={{ height: '75px', display: 'flex', flexDirection: 'row', alignItems: "center", cursor: "pointer"}}>
                 {artObject.thumbnail !== "" &&
-                    <img src={artObject.thumbnail} alt="" width={50} height={50}/>
+                    <div style={{height: '50px', width: '50px', textAlign: "center"}}>
+                    <img src={artObject.thumbnail} alt="" style={{maxHeight: '50px', maxWidth: '50px', width: 'auto', height: 'auto'}}/>
+                    </div>
                 }
                 <div style={{marginLeft: '10px'}}>
                     <h2 style={{fontSize: '1rem', margin: '0'}}>
@@ -63,10 +65,6 @@ const Gallery: React.FC = () => {
         const fetchArtList = async function() {
             const artCollectionIds = await fetch('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=6')
                 .then((response)=>{
-                    if (!response.ok) {
-                        showErrorAlert()
-                        return;
-                    }
                     return response.json()
                 }).catch((error) => {
                     showErrorAlert()
@@ -89,9 +87,6 @@ const Gallery: React.FC = () => {
 
                 for (let artId of artIdsToFetch) {
                     const artDetail = await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${artId}`).then((response) => {
-                        if (!response.ok) {
-                            showErrorAlert()
-                        }
                         return response.json()
                     }).catch((error) => {
                         showErrorAlert()

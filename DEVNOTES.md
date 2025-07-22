@@ -9,8 +9,9 @@ Second note: Most of the time, the items that are returned have photos. However,
 # Potential improvements
 
 1. Design - I am not a designer, so this is a very rudimentary MVP type design and styling. More sophisticated design would be ideal.
-3. The API does not provide any "alt tag" or "description" text that we could put in the alt tags. This isn't ideal. Since the pictures all are next to their titles, I have just set the alt tag to an empty string so the screenreader skips it (it'd be redundant to set the alt tag to the title when the title is right next to it).
-4. Testing - I generally like to include snapshot and lighthouse tests, as well.
-5. Browser testing - it'd be great to have a framework that allows for browser/integration tests, also.
-6. Error alerts - Obviously, the browser alert isn't very pretty. A slicker modal for errors would be preferred.
-7. File structure - in a larger app, I'd probably want simple/shared components (like the button) in one place, and components for a specific feature (like the Gallery) in another. However, there are so few components it did not seem worth it at this point.
+2. The API does not provide any "alt tag" or "description" text that we could put in the alt tags. This isn't ideal. Since the pictures all are next to their titles, I have just set the alt tag to an empty string so the screenreader skips it (it'd be redundant to set the alt tag to the title when the title is right next to it).
+3. Testing - I generally like to include snapshot and lighthouse tests, as well.
+4. Browser testing - it'd be great to have a framework that allows for browser/integration tests, also.
+5. Error alerts - Obviously, the browser alert isn't very pretty. A slicker modal for errors would be preferred.
+6. File structure - in a larger app, I'd probably want simple/shared components (like the button) in one place, and components for a specific feature (like the Gallery) in another. However, there are so few components it did not seem worth it at this point.
+7. Clean up Gallery tests - right now coverage is good, but it does feel like it could potentially be a little more organized.

@@ -1,4 +1,4 @@
-#Dev Notes
+# Dev Notes
 
 This project leverages the Metropolitan Museum of NY's API to display art from the museums Asian Department, many of which is found in their Gallery 206.
 
@@ -6,7 +6,7 @@ Note: Their API only allows 80 calls per minute, and each page of items involves
 
 Second note: Most of the time, the items that are returned have photos. However, sometimes, they do not. If you load the page and there are no images, I recommend a refresh to retrieve different objects that have images.
 
-#Potential improvements
+# Potential improvements
 
 1. Design - I am not a designer, so this is a very rudimentary MVP type design and styling. More sophisticated design would be ideal.
 3. The API does not provide any "alt tag" or "description" text that we could put in the alt tags. This isn't ideal. Since the pictures all are next to their titles, I have just set the alt tag to an empty string so the screenreader skips it (it'd be redundant to set the alt tag to the title when the title is right next to it).
